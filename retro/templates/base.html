@@ -1,4 +1,4 @@
-{% load cms_tags menu_tags sekizai_tags %}
+{% load cms_tags menu_tags sekizai_tags static %}
 <!doctype html>
 <html>
     <head>
@@ -6,6 +6,9 @@
         <title>{% block title %}This is my new project home page{% endblock title %}</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <style type="text/css">
+            a {
+                color: white;
+            }
             .nav {
                 padding-left: 0;
             }
@@ -29,15 +32,13 @@
         </style>
         {% render_block "css" %}
     </head>
-    <body>
+    <body style="background-color: grey">
+        {% cms_toolbar %}
         {% block header %}
             {% include "header.html" %}
         {% endblock %}    
-        {% cms_toolbar %}
-        <div class="container">
-            <ul class="nav">
-                {% show_menu 0 100 100 100 %}
-            </ul>
+        <div class="container" >
+
             {% block content %}{% endblock content %}
         </div>
         {% render_block "js" %}

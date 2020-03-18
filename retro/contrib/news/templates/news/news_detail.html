@@ -3,7 +3,7 @@
 <article>
     <h1>{{ news.title }}</h1>
         {% if news.image %}
-            <img src='{{ news.image.url }}'/>
+            <img src='{{ news.image.url }}' height="400" width="650"/>
         {% endif %}
     <p>{{ news.text }}</p>
 </article>

@@ -1,18 +1,23 @@
-{% load menu_tags static %}
+{% load cms_tags menu_tags sekizai_tags static %}
 
 {% block navigation %}
-<div class="gridSystem second-navigation">
-  <div id="mainNav">
-    <div class="mainNavContent">
-      <div id="logo" class="logo">
-        <h1>
-          <a href="/" title="Избери, за да помогнеш">
-            <span class="kampaniaLogo">Верига ресторани </span>
-            <span class="rbbLogo">РЕТРО</span>
-          </a>
-        </h1>
+<header class="masthead" style="background-color: #E2C400; border-bottom: 2px solid #3AB074;">
+  <div class="container">
+    <div class="row">
+      <img src="{% static 'retro_1.jpg' %}" alt="Smiley face" height="150" width="190">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h2>Верига ресторанти РЕТРО</h2>
+          <span class="subheading">Поръчайте от нашите верига ресторанти храна за вкъщи.</span>
+          <br>
+          <br>
+          <br>
+          <ul class="nav">
+            {% show_menu 0 100 100 100 %}
+        </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</header>
 {% endblock %}

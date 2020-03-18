@@ -1,11 +1,15 @@
 {% extends 'fullwidth.html' %}
+{% load static %}
 
 {% block content %}
-<ul>
+<ul style="list-style: none;">
     {% for news in object_list %}
-        <li>
-            <a href="{% url 'news:news-detail' news.pk %}">{{ news.title }}</a>
-        </li>
+    <br>
+    <li>
+        <a href="{% url 'news:news-detail' news.pk %}"><h4>{{ news.title }}</h4>
+            <img src="{{ news.image.url }}" alt="Smiley face" height="240" width="350">
+        </a>
+    </li>
     {% endfor %}
 </ul>
 {% endblock %}
