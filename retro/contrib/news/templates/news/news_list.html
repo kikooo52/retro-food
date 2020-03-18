@@ -1,0 +1,11 @@
+{% extends 'fullwidth.html' %}
+
+{% block content %}
+<ul>
+    {% for news in object_list %}
+        <li>
+            <a href="{% url 'news:news-detail' news.pk %}">{{ news.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
