@@ -3,13 +3,19 @@
 
 {% block content %}
 <ul style="list-style: none;">
-    {% for news in object_list %}
     <br>
+    {% for news in object_list %}
     <li>
-        <a href="{% url 'news:news-detail' news.pk %}"><h4>{{ news.title }}</h4>
-            <img src="{{ news.image.url }}" alt="Smiley face" height="240" width="350">
+        <a href="{% url 'news:news-detail' news.pk %}"><h5>{{ news.title }}</h5>
+            <div>
+                <div style="display: inline-flex;"><img style=" height: 100%; margin-right: 10px; border-style: solid;" src="{{ news.image.url }}" alt="Smiley face" height="120" width="230">
+                {{ news.text }}
+                </div>
+            </div>
         </a>
+        <a style="margin-top: 10px; background-color: #3AB074;" href="https://google.com" class="btn btn-default">Поръчай</a>
     </li>
+    <hr style="background-color: #E2C400;">
     {% endfor %}
 </ul>
 {% endblock %}
