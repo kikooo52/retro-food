@@ -181,7 +181,8 @@ INSTALLED_APPS = [
     'djangocms_video',
     'crispy_forms',
     'retro',
-    'retro.contrib.news'
+    'retro.contrib.news',
+    'retro.contrib.orders'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
