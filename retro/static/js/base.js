@@ -6,8 +6,10 @@ $(document).ready(function() {
     }
 
     $('.order_btn').click( function(e) {
-        debugger
+        debugger             
         e.preventDefault(); 
+
+        removeCookie('idss')
         let cartCount = $(".header__cart-count").text();
         cartCount++;
         $(".header__cart-count").text(cartCount);
@@ -22,11 +24,12 @@ $(document).ready(function() {
         let Ids = [];
         Ids.push(pk);
         let lastOrder = getOrder();
-        if (lastOrder) {        
+        if (lastOrder) {
             Ids = Ids.concat(lastOrder.ordersId);
+            var Idsss = Ids.indexOf(pk) === -1 ? Ids.push(pk) : console.log("This item already exists");
         }
-
-        let order = { 'cartCount': cartCount, 'date': expirationHour.getTime(), 'ordersId': Ids };
+        setCookie('ordersId', JSON.stringify(Ids));
+        let order = { 'cartCount': cartCount, 'date': expirationHour.getTime(), 'ordersId': Ids, 'idds':  Idsss};
         localStorage.setItem('order', JSON.stringify(order));
     }
 
@@ -44,5 +47,13 @@ $(document).ready(function() {
         if (date < new Date()) {
             localStorage.removeItem("order");
         }
+    }
+    function setCookie(name, value) {
+        var expiration_date = new Date();
+        expiration_date.setTime(expiration_date.getTime() + 1 * 3600 * 1000);
+        document.cookie = name + '=' + value +'; expires=' + expiration_date.toUTCString() + '; path=/';
+    }
+    function removeCookie(name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;';
     }    
 });

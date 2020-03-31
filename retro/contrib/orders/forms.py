@@ -4,7 +4,6 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
-    name = forms.CharField()
 
     class Meta:
         model = Order
