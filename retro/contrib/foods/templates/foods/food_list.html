@@ -1,0 +1,27 @@
+{% extends 'fullwidth.html' %}
+{% load static %}
+
+{% block content %}
+<ul style="list-style: none;">
+    <br>
+    {% for food in object_list %}
+    <li>
+        <a href="{% url 'foods:food-detail' food.pk %}"><h5>{{ food.title }}</h5>
+            <div>
+                <div style="display: inline-flex;"><img style=" height: 100%; margin-right: 10px; border-style: solid;" src="{{ food.image.url }}" alt="Smiley face" height="120" width="230">
+                {{ food.text }}
+                </div>
+            <div>{{food.price}} лв.</div>
+            </div>
+        </a>
+        {% comment %} <a style="margin-top: 10px; background-color: #3AB074;" href="#" data-myval="{{food.pk}}" class="btn order_btn">Добави в количка</a> {% endcomment %}
+        <form action="{% url "cart:cart_add" food.pk %}" method="post">
+            {% csrf_token %}
+            {{ cart_product_form }}
+            <input style="background-color: #3AB074;" type="submit" value="Добави" class="btn btn-primary">
+        </form>        
+    </li>
+    <hr style="background-color: #E2C400;">
+    {% endfor %}
+</ul>
+{% endblock %}

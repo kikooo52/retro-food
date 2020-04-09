@@ -1,14 +1,8 @@
-from django.urls import path
-from django.conf import settings
-from djamgo.cong.urls.static import static
-
+from django.conf.urls import url
 from . import views
 
+app_name = 'orders'
 
 urlpatterns = [
-    path('za-vkshi/<int:item_id>', views.Stuff.as_view(), name='za-vkshi')
+    url(r'^create/$', views.order_create, name='order_create')
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL,
-        document_root=settings.STATIC_ROOT)

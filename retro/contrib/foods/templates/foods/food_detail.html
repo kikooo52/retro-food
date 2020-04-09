@@ -1,0 +1,11 @@
+{% extends 'fullwidth.html' %}
+{% block content %}
+<article>
+    <h1>{{ food.title }}</h1>
+        {% if food.image %}
+            <img src='{{ food.image.url }}' height="400" width="650"/>
+        {% endif %}
+    <p>{{ food.text }}</p>
+    <div>{{food.price}} лв.</div>
+</article>
+{% endblock %}

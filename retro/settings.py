@@ -13,6 +13,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from django.utils.translation import ugettext_lazy as _
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -183,9 +185,17 @@ INSTALLED_APPS = [
     'djangocms_video',
     'crispy_forms',
     'retro',
-    'retro.contrib.news',
+    'retro.contrib.cart',
     'retro.contrib.orders',
+    'retro.contrib.foods',
+    'retro.contrib.news',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -290,3 +300,5 @@ DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES = (
     ('dark', _('Dark')),
     ('custom', _('Custom')),
 )
+
+CART_SESSION_ID = 'cart'

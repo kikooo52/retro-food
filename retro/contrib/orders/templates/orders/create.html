@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static crispy_forms_tags %}
+{% block title %}
+    Your Shopping Cart| Checkout
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row" style="margin-top: 3%">
+            <div class="col-md-7">
+                <h4 class="page-header">Направете вашата поръчка</h4>
+                <form action="." method="post">
+                    {% csrf_token %}
+                    <div class="col-9">
+                        {{ form.name|as_crispy_field }}
+                        {{ form.phone|as_crispy_field }}
+                        {{ form.address|as_crispy_field }}
+                    </div>                    
+                    <input style="background-color: #3AB074;" type="submit" class="btn btn-primary" value="Поръчай">
+                </form>
+            </div>
+            <div class="col-md-5">
+                <div class="page-header">
+                    Вашата поръчка
+                </div>
+                <ul class="list-group">
+                    {% for item in cart %}
+                        <li class="list-group-item">
+                        {{ item.quantity }}x {{ item.food.title }}
+                        <span>{{ item.total_price }} лв.</span>
+                        </li>
+                    {% endfor %}
+
+                <li class="list-group-item active">Крайна цена: {{ cart.get_total_price }} лв.</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

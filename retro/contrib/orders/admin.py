@@ -1,10 +1,18 @@
 from django.contrib import admin
-from .models import Order
+from .models import Order, OrderItem
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    fields = 'foods', 'price', 'quantity',
+    extra = 1
 
 
 @admin.register(Order)
-class NewsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'email', 'created_at')
-    list_filter = ('name', 'phone', 'email',)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'phone', 'address', 'paid', 'get_total_cost', 'created_at')
+    list_filter = ['paid', 'created_at', 'updated', 'name']
+    readonly_fields = ('get_total_cost', )    
     date_hierarchy = 'created_at'
     search_fields = ('name', )
+
+    inlines = [OrderItemInline]    

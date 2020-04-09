@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% load static %}
 {% block title %}
     Your Shopping Cart| Thank you
@@ -7,9 +8,9 @@
     <div class="container">
         <div class="row" style="margin-top: 6%">
             <div class="col-md-8 col-md-offset-2">
-                <h3 class="page-header">Thank You For Shopping With Us
+                <h3 class="page-header">Благодарим ви!
                 </h3>
-                <p>Your order has been successfully completed. Your order number is <strong>{{ order.id }}</strong>.</p>
+                <p>Вашата поръчка се обработва и ще се свържем с вас.<strong>{{ order.id }}</strong>.</p>
             </div>
         </div>
     </div>

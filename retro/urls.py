@@ -18,7 +18,9 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    url(r'^orders/', include('retro.contrib.orders.urls')),
     url(r'^admin/', admin.site.urls),  # NOQA
+    url(r'^cart/', include('retro.contrib.cart.urls')),
     url(r'^', include('cms.urls')),
 )
 
