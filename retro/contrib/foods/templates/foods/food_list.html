@@ -2,6 +2,16 @@
 {% load static %}
 
 {% block content %}
+<div class="hover_bkgr_fricc">
+    <span class="helper"></span>
+    <div>
+        <div class="popupCloseButton">&times;</div>
+        <p class="foodName"></p>
+        <p>Продуктът е добавен в количката!</p>
+        <a class="makeOrder" href="{% url "cart:cart_detail" %}" >Направи поръчка</a>
+        <div class="clearing">&nbsp;</div>
+    </div>
+</div>
 <ul style="list-style: none;">
     <br>
     {% for food in object_list %}
@@ -15,11 +25,12 @@
             </div>
         </a>
         {% comment %} <a style="margin-top: 10px; background-color: #3AB074;" href="#" data-myval="{{food.pk}}" class="btn order_btn">Добави в количка</a> {% endcomment %}
-        <form action="{% url "cart:cart_add" food.pk %}" method="post">
+       <form method="POST" id="postForm">
             {% csrf_token %}
             {{ cart_product_form }}
-            <input style="background-color: #3AB074;" type="submit" value="Добави" class="btn btn-primary">
-        </form>        
+            {% comment %} <input style="background-color: #3AB074;" type="submit" value="Добави" data-myval="{{food.pk}}" class="btn order_btn" class="btn btn-primary"> {% endcomment %}
+            <button style="background-color: #3AB074;" type="submit" class="btn btn-primary" data-myval="{{food.pk}}" class="btn order_btn">Добави в количка</button>
+        </form>
     </li>
     <hr style="background-color: #E2C400;">
     {% endfor %}

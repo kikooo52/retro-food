@@ -1,35 +1,54 @@
 $(document).ready(function() {
+    $('.popupCloseButton').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });    
     let order = getOrder();
     if (order){
         $(".header__cart-count").text(order.cartCount);
         checkExpiration(new Date(order.date));
     }
 
-    $('.order_btn').click( function(e) {
-        debugger             
+    $(document).on('submit', '#postForm',function(e){
+        debugger
         e.preventDefault(); 
-
-        removeCookie('idss')
-        let cartCount = $(".header__cart-count").text();
-        cartCount++;
-        $(".header__cart-count").text(cartCount);
-        let pk = $(this).data('myval');
-        setOrder(cartCount, pk);        
+        let food = $(this);
+        submit(food);
+        //setOrder(cartCount, foodId);
         return false; 
     });
 
-    function setOrder(cartCount, pk) {
+    function submit(food) {
+        let foodId = food.find("button").data('myval');
+        let quantity = food.find("#id_quantity").val()
+        $.ajax({
+            type:'POST',
+            url: "/bg/cart/add/" + foodId + "/",
+            data:{
+                quantity: quantity,
+                update_quantity: false,
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            success:function(json){
+                debugger
+                document.getElementById("postForm").reset();               
+                $('.hover_bkgr_fricc').show();
+                $('.foodName').html(json.result.quantity + " x " + json.result.food_name +" <span style='color: green'>&#10003; </span>");
+                let cartCount = $(".header__cart-count").text();
+                cartCount = +cartCount + +json.result.quantity;
+                $(".header__cart-count").text(cartCount);
+                setOrder(cartCount);
+            },
+            error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        }
+        });
+    }
+
+    function setOrder(cartCount) {
         let expirationHour = new Date();
         expirationHour.setHours(expirationHour.getHours() + 1); //one hour from now
-        let Ids = [];
-        Ids.push(pk);
-        let lastOrder = getOrder();
-        if (lastOrder) {
-            Ids = Ids.concat(lastOrder.ordersId);
-            var Idsss = Ids.indexOf(pk) === -1 ? Ids.push(pk) : console.log("This item already exists");
-        }
-        setCookie('ordersId', JSON.stringify(Ids));
-        let order = { 'cartCount': cartCount, 'date': expirationHour.getTime(), 'ordersId': Ids, 'idds':  Idsss};
+        let order = { 'cartCount': cartCount, 'date': expirationHour.getTime()};
         localStorage.setItem('order', JSON.stringify(order));
     }
 
@@ -48,12 +67,30 @@ $(document).ready(function() {
             localStorage.removeItem("order");
         }
     }
-    function setCookie(name, value) {
-        var expiration_date = new Date();
-        expiration_date.setTime(expiration_date.getTime() + 1 * 3600 * 1000);
-        document.cookie = name + '=' + value +'; expires=' + expiration_date.toUTCString() + '; path=/';
-    }
-    function removeCookie(name) {
-        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;';
-    }    
+
+    $('.removeFood').click(function(e){
+        let foodCount = $(this).closest('tr').find('select').val();
+        let order = getOrder();
+        if (order){
+            let newCount = +order.cartCount - +foodCount;
+            if (newCount < 0) {
+                newCount = 0;
+            }
+            setOrder(newCount);
+        }
+    });
+
+    $('.updateFood').click(function(e){
+        let quantities = $("select[name=quantity]");
+        let newCount = 0;
+        for (let index = 0; index < quantities.length; index++) {
+           let quantity = $(quantities[index]).val();
+           newCount = newCount + +quantity;
+            
+        }
+        let order = getOrder();
+        if (order){
+            setOrder(newCount);
+        }
+    });
 });
