@@ -36,11 +36,3 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
-
-
-class OrderFormPlugin(CMSPlugin):
-    title = models.CharField(_('Title'), max_length=100)
-    success_message = models.CharField(_('Success Message after form is submitted'), max_length=300, default='')
-
-    def __str__(self):
-        return self.title

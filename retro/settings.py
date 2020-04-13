@@ -188,7 +188,6 @@ INSTALLED_APPS = [
     'retro.contrib.cart',
     'retro.contrib.orders',
     'retro.contrib.foods',
-    'retro.contrib.news',
     'rest_framework',
 ]
 
