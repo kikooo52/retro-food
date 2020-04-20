@@ -1,11 +1,17 @@
 {% extends 'fullwidth.html' %}
 {% block content %}
-<article>
-    <h1>{{ food.title }}</h1>
+<article style="color: #fff">
+    <br>
+    <h1 style=>{{ food.title }}</h1>
         {% if food.image %}
-            <img src='{{ food.image.url }}' height="400" width="650"/>
+            <img style="border-style: solid;" src='{{ food.image.url }}' height="400" width="650"/>
         {% endif %}
     <p>{{ food.text }}</p>
     <div>{{food.price}} лв.</div>
+    <form method="POST" id="postForm">
+        {% csrf_token %}
+        {{ cart_product_form }}
+        <button style="background-color: #3AB074;" type="submit" class="btn btn-primary" data-myval="{{food.pk}}" class="btn order_btn">Добави в количка</button>
+    </form>  
 </article>
 {% endblock %}

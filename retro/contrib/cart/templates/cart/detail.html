@@ -7,14 +7,14 @@
 
 {% block content %}
     <div class="container">
-        <div class="row" style="margin-top: 6%">
+        <div class="row">
         <h2>
-            <span class="badge pull-right">
+            <span class="badge pull-right title">
                 {% with totail_items=cart|length %}
                     {% if cart|length > 0 %}
                         Моята количка:
                         <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
-                            {{ totail_items }} пъръчки {{ totail_items|pluralize }}, {{ cart.get_total_price }} лв.
+                            {{ totail_items }} пъръчки, {{ cart.get_total_price }} лв.
                         </a>
                         {% else %}
                         Вашата количка е празна.
@@ -23,7 +23,7 @@
             </span>
         </h2>
             <table class="table table-striped table-hover">
-                <thead style="background-color: #3AB074">
+                <thead style="background-color: #E2C400">
                     <tr>
                         <th>Продукт</th>
                         <th></th>
@@ -57,7 +57,7 @@
                         </tr>
                     {% endwith %}
                 {% endfor %}
-                <tr style="background-color: #3AB074">
+                <tr style="background-color: #E2C400">
                     <td><b>Крайна цена</b></td>
                     <td colspan="4"></td>
                     <td colspan="num"><b>{{ cart.get_total_price }} лв.</b></td>
@@ -66,7 +66,7 @@
             </table>
             <p class="text-right">
                 {% comment %} <a href="{% url "shop:product_list" %}" class="btn btn-default">Continue Shopping</a> {% endcomment %}
-                <a href="{% url "orders:order_create" %}" class="btn btn-primary">Поръчай</a>
+                <a style="background-color: #3AB074;" href="{% url "orders:order_create" %}" class="btn btn-primary">Поръчай</a>
             </p>
         </div>
     </div>

@@ -22,3 +22,11 @@ def order_create(request):
     else:
         form = OrderForm()
     return render(request, 'orders/create.html', {'form': form, 'cart': cart})
+
+
+def terms_site(request):
+    return render(request, 'orders/terms_site.html')
+
+
+def terms_gdpr(request):
+    return render(request, 'orders/terms_gdpr.html')

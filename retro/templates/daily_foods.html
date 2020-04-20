@@ -1,0 +1,16 @@
+{% for category in category_list %}
+{% if category.dailyfood.all %}
+<ul>
+    <h6 style="color: #E2C400;">{{category.name}}:</h6>
+    {% for food in category.dailyfood.all %}
+    <li class="title">
+        <div>{{ food }} - {{food.price}} лв. </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endfor %} 
+
+<div style="margin-top: 45px;">
+    <span class="title phone">Телефон за поръчка: <br><a href="tel:0879603717">&#9990; 0879603717</a></span>
+</div>

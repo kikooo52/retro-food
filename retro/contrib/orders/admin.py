@@ -11,7 +11,7 @@ class OrderItemInline(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'phone', 'address', 'paid', 'get_total_cost', 'created_at')
     list_filter = ['paid', 'created_at', 'updated', 'name']
-    readonly_fields = ('get_total_cost', )    
+    readonly_fields = ('get_total_cost', 'created_at', 'updated', )
     date_hierarchy = 'created_at'
     search_fields = ('name', )
 

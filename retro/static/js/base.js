@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('.popupCloseButton').click(function(){
-        $('.hover_bkgr_fricc').hide();
+        $('.messageOrederSuccess').hide();
     });    
     let order = getOrder();
     if (order){
@@ -9,7 +9,6 @@ $(document).ready(function() {
     }
 
     $(document).on('submit', '#postForm',function(e){
-        debugger
         e.preventDefault(); 
         let food = $(this);
         submit(food);
@@ -30,9 +29,8 @@ $(document).ready(function() {
                 action: 'post'
             },
             success:function(json){
-                debugger
                 document.getElementById("postForm").reset();               
-                $('.hover_bkgr_fricc').show();
+                $('.messageOrederSuccess').show();
                 $('.foodName').html(json.result.quantity + " x " + json.result.food_name +" <span style='color: green'>&#10003; </span>");
                 let cartCount = $(".header__cart-count").text();
                 cartCount = +cartCount + +json.result.quantity;

@@ -4,11 +4,33 @@ body {
   background: linear-gradient(to right, #114357, #f29492); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
-a {
-  color: white;
+.float-container {
+  padding: 15px;
 }
-table {
-  color: white;
+
+.first-child {
+  width: 25%;
+  float: left;
+  padding: 21px 0 0 12px;
+} 
+
+.second-child {
+  width: 65%;
+  float: left;
+  padding: 20px 0px 0px 10px;
+  border-left: 1px solid #E2C400;
+  margin-left: 10px;
+}  
+
+.row label {
+  color: #fff;
+}
+a, .title {
+  color: #fff;
+}
+.table {
+  color: #fff;
+  width: 95%;
 }
 a:hover {
   color: #E2C400;
@@ -27,10 +49,6 @@ a:hover {
 }            
 .selected {
   text-decoration: underline; 
-}
-.container {
-  width: 940px;
-  margin: 0 auto
 }
 .content {
   float: left;
@@ -63,7 +81,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #fff;
   border-radius: 10px;
   font-size: 12px;
 }
@@ -80,7 +98,7 @@ a:hover {
 }
 
 /* Popup box BEGIN */
-.hover_bkgr_fricc{
+.messageOrederSuccess{
   display:none;
   height:20%;
   position:fixed;
@@ -89,12 +107,12 @@ a:hover {
   width:20%;
   z-index:10000;
 }
-.hover_bkgr_fricc .helper{
+.messageOrederSuccess .helper{
   display:inline-block;
   height:100%;
   vertical-align:middle;
 }
-.hover_bkgr_fricc > div {
+.messageOrederSuccess > div {
   background-color: #d1d8cc;
   box-shadow: 10px 10px 60px #555;
   display: inline-block;
@@ -132,17 +150,21 @@ a:hover {
   display: inline-block;
   font-weight: bold;
 }
-.hover_bkgr_fricc .makeOrder {
+.messageOrederSuccess .makeOrder {
   background-color: #28a228;
   padding: 7px;
   border-radius: 4px;
 }
 
 #postForm label {
-  color: white;
+  color: #fff;
 }
 
 .foodName {
   content: "\2713";
+}
+
+.phone {
+  font-size: 1.2rem;
 }
 /* Popup box BEGIN */

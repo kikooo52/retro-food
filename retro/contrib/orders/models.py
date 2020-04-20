@@ -9,16 +9,21 @@ class Order(models.Model):
     name = models.CharField(u'Име и Фамилия', max_length=150)
     phone = models.CharField(u'Телефон', max_length=150)
     email = models.EmailField(u'E-mail', blank=True)
-    address = models.EmailField(u'Адрес', max_length=250, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    paid = models.BooleanField(default=False)    
+    address = models.CharField(u'Адрес', max_length=250)
+    created_at = models.DateTimeField(u'Създадено на', auto_now_add=True)
+    updated = models.DateTimeField(u'Променено на', auto_now=True)
+    paid = models.BooleanField(u'Платено', default=False)
+    declaration_site = models.BooleanField(u'Съгласен съм с', default=False)
+    declaration_gdpr = models.BooleanField(u'Съгласен съм с', default=False)
+
 
     class Meta:
+        verbose_name = u'Поръчка'
+        verbose_name_plural = u'Поръчки'
         ordering = ('-created_at', )
 
     def __str__(self):
-        return 'Order {}'.format(self.id)
+        return 'Поръчка {}'.format(self.id)
 
     @adminfield(u'Сума')
     def get_total_cost(self):

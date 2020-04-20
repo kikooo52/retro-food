@@ -1,4 +1,4 @@
-{% load cms_tags menu_tags sekizai_tags static %}
+{% load cms_tags menu_tags sekizai_tags retro_tags static %}
 <!doctype html>
 <html>
     <head>
@@ -12,11 +12,27 @@
         {% cms_toolbar %}
         {% block header %}
             {% include "header.html" %}
-        {% endblock %}    
-        <div class="container" >
-
-            {% block content %}{% endblock content %}
-        </div>
+        {% endblock %}
+            <div class="float-container">
+                <div class="first-child">
+                    <h5 class="title">Нашето обедно меню</h5>
+                    {% get_daily_foods %}
+                </div>
+                
+                <div class="second-child">
+                    <div class="messageOrederSuccess">
+                        <span class="helper"></span>
+                        <div>
+                            <div class="popupCloseButton">&times;</div>
+                            <p class="foodName"></p>
+                            <p>Продуктът е добавен в количката!</p>
+                            <a class="makeOrder" href="{% url "cart:cart_detail" %}" >Направи поръчка</a>
+                            <div class="clearing">&nbsp;</div>
+                        </div>
+                    </div>
+                    {% block content %}{% endblock content %}
+                </div>
+            </div>
             <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
             <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>            
             <script src="{% static 'js/base.js' %}" type="text/javascript" charset="utf-8"></script>
