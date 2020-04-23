@@ -17,6 +17,8 @@ from django.utils.translation import ugettext_lazy as _
 
 import os
 
+import django_heroku
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -302,3 +304,6 @@ DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES = (
 )
 
 CART_SESSION_ID = 'cart'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
