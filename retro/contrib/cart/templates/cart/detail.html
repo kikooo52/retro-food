@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}
-    Your Shopping Cart
-{% endblock %}
-
 
 {% block content %}
     <div class="container">
@@ -50,7 +46,7 @@
                                 </form>
                             </td>
                             <td>
-                                <a class="removeFood" href="{% url "cart:cart_remove" product.id %}" style="background-color: #3AB074;">Премахни</a>
+                                <a class="removeFood btn" href="{% url "cart:cart_remove" product.id %}" style="background-color: #3AB074;">Премахни</a>
                             </td>
                             <td>{{ item.price }} лв.</td>
                             <td>{{ item.total_price }} лв.</td>

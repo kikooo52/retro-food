@@ -1,8 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}
-    Your Shopping Cart| Thank you
-{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -14,3 +11,17 @@
         </div>
     </div>
 {% endblock %}
+{% block js %}
+{{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            let order = window.bundleObj.getOrder()
+            if (order){
+                let newCount = 0;
+                window.bundleObj.setOrder(newCount);
+                $(".header__cart-count").text(newCount);
+            }
+        });
+    </script>
+{% endblock %}
+
