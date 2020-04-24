@@ -98,13 +98,13 @@ a:hover {
 }
 
 /* Popup box BEGIN */
-.messageOrederSuccess{
+.messageOrederSuccess {
   display:none;
   height:20%;
   position:fixed;
   text-align:center;
   top:40px;
-  width:20%;
+  width:25%;
   z-index:10000;
 }
 .messageOrederSuccess .helper{

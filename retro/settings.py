@@ -19,6 +19,18 @@ import os
 
 import django_heroku
 
+import random
+
+def random_digit_challenge():
+    ret = u''
+    for i in range(3):
+        ret += str(random.randint(0,9))
+    return ret, ret
+
+CAPTCHA_LETTER_ROTATION = 0        
+CAPTCHA_NOISE_FUNCTIONS = []
+CAPTCHA_CHALLENGE_FUNCT = random_digit_challenge
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -192,6 +204,7 @@ INSTALLED_APPS = [
     'retro.contrib.orders',
     'retro.contrib.foods',
     'rest_framework',
+    'captcha',
 ]
 
 REST_FRAMEWORK = {

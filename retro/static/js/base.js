@@ -6,6 +6,7 @@ $(document).ready(function() {
         let order = getOrder();
         if (order){
             $(".header__cart-count").text(order.cartCount);
+            checkExpiration(new Date(order.expirationDate));
         }
     
         $(document).on('submit', '#postForm',function(e){
@@ -41,12 +42,14 @@ $(document).ready(function() {
                 }
             });
         }
-    
+
         function setOrder(cartCount) {
-            let order = { 'cartCount': cartCount};
+            let expirationHours = new Date();
+            expirationHours.setHours(expirationHours.getHours() + 2); //two hours from now
+            let order = { 'cartCount': cartCount, 'expirationDate': expirationHours.getTime()};
             localStorage.setItem('order', JSON.stringify(order));
         }
-    
+
         function getOrder() {
             let order = localStorage.getItem('order');
             if (order) {
@@ -67,7 +70,7 @@ $(document).ready(function() {
                 setOrder(newCount);
             }
         });
-    
+
         $('.updateFood').click(function(e){
             let quantities = $("select[name=quantity]");
             let newCount = 0;
@@ -80,7 +83,14 @@ $(document).ready(function() {
                 setOrder(newCount);
             }
         });
-    
+
+        function checkExpiration(expirationDate) {
+            // Check for expiration hours
+            if (expirationDate < new Date()) {
+                localStorage.removeItem("order");
+            }
+        }
+
         global.bundleObj = {
           setOrder: setOrder,
           getOrder: getOrder
