@@ -19,7 +19,7 @@ django-ranged-response==0.2.0
 django-sekizai==1.1.0
 django-simple-captcha==0.5.12
 django-treebeard==4.3.1
-django==2.2.18
+django==2.2.21
 djangocms-admin-style==1.4.0
 djangocms-attributes-field==1.2.0
 djangocms-bootstrap4==1.5.0
