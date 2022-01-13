@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f2f8cde75a8ae5f1c6130f1e2f12f55049ca31b75add7eb1e1f513fcf5e0e80c"
+            "sha256": "f801f0f3386b20758eaed0c5121327527d4aa1fa3bb945c1cbe71ce1bcb7218b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -80,11 +80,11 @@
         },
         "django-cms": {
             "hashes": [
-                "sha256:05ea915d490562413428e04acb9ecae604c63b8dc5ed9250d0e9437b1314c996",
-                "sha256:89d1e3bebd732a6bd00b0cfaf8128bfb0924429e83f1297e0b34dd9343e55b7a"
+                "sha256:9302f0e21153fc9afca55d9c3424ca3654b51d274a1af6ec39f4fbb05059fe46",
+                "sha256:9374af5a35bac590f1891031fb0878a0e6c2dc5309a6907929c6a036493694f6"
             ],
             "index": "pypi",
-            "version": "==3.7.1"
+            "version": "==3.7.4"
         },
         "django-crispy-forms": {
             "hashes": [
@@ -165,6 +165,7 @@
         },
         "django-simple-captcha": {
             "hashes": [
+                "sha256:33f6a01fb8da1a2283bcc56db35cbb3fdc3f444157363ae25f0b48d111ca52de",
                 "sha256:fc25f0425e282aa82d2a65013049a8dc7c0682f8e05d32681c39a0c55ed322bd"
             ],
             "index": "pypi",
@@ -401,6 +402,14 @@
             "index": "pypi",
             "version": "==7.0.0"
         },
+        "pip": {
+            "hashes": [
+                "sha256:deaf32dcd9ab821e359cd8330786bcd077604b5c5730c0b096eda46f95c24a2d",
+                "sha256:fd11ba3d0fdb4c07fbc5ecbba0b1b719809420f25038f8ee3cd913d3faa3033a"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==21.3.1"
+        },
         "prompt-toolkit": {
             "hashes": [
                 "sha256:859e1b205b6cf6a51fa57fa34202e45365cf58f8338f0ee9f4e84a4165b37d5b",
@@ -468,6 +477,14 @@
             ],
             "index": "pypi",
             "version": "==2019.3"
+        },
+        "setuptools": {
+            "hashes": [
+                "sha256:22c7348c6d2976a52632c67f7ab0cdf40147db7789f9aed18734643fe9cf3373",
+                "sha256:4ce92f1e1f8f01233ee9952c04f6b81d1e02939d6e1b488428154974a4d0783e"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==59.6.0"
         },
         "six": {
             "hashes": [
